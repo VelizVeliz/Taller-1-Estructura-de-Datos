@@ -36,6 +36,10 @@ bool Servicio::isEmpty() const {
 // Inserta el paciente al final de la lista enlazada del servicio,
 // respetando el orden en que fueron llegando (insertLast manual).
 void Servicio::agregarPaciente(Paciente* p) {
+    if (p== nullptr){
+        return;
+    }
+    
     Nodo<Paciente*>* nuevo = new Nodo<Paciente*>(p);
 
     if (listaPacientes == nullptr) {
