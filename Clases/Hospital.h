@@ -44,6 +44,9 @@ public:
     // Muestra el estado (pacientes actuales) de un servicio en particular
     void mostrarDepartamento(string nombreServicio) const;
 
+    Paciente* buscarPaciente(string id) const;
+
+
     // Muestra el historial completo de atenciones 
     void mostrarHistorial() const;
 

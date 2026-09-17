@@ -13,12 +13,12 @@ int main() {
     }
 
     int opcion = -1;
-    while (opcion != 4) {
-        cout << endl << "=== HOSPITAL MARMAJA ===" << endl;
+    while (opcion != 5) {
         cout << "1. Atender pacientes" << endl;
         cout << "2. Ver departamento" << endl;
         cout << "3. Revisar historial de atencion" << endl;
-        cout << "4. Salir" << endl;
+        cout << "4. Buscar paciente" << endl;
+        cout << "5. Salir" << endl;
         cout << "Seleccionar opcion: ";
         cin >> opcion;
 
@@ -70,9 +70,30 @@ int main() {
             case 3:
                 hospital.mostrarHistorial();
                 break;
-            case 4:
+            case 4: {
+                string id;
+
+                cout << "Ingrese ID del paciente: ";
+                cin >> id;
+
+                Paciente* paciente = hospital.buscarPaciente(id);
+
+                if (paciente == nullptr) {
+                    cout << "Paciente no encontrado." << endl;
+                } else {
+                    cout << "ID: " << paciente->getId() << endl;
+                    cout << "Nombre: " << paciente->getNombre() << endl;
+                    cout << "Edad: " << paciente->getEdad() << endl;
+                    cout << "Servicio: " << paciente->getServicio() << endl;
+                }
+
+                break;
+            }
+
+            case 5:
                 cout << "Hasta luego." << endl;
                 break;
+
             default:
                 cout << "Opcion invalida." << endl;
         }

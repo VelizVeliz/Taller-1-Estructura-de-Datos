@@ -9,6 +9,10 @@ Hospital::Hospital() {
 }
 
 Hospital::~Hospital() {
+    while (!colaPendientes.isEmpty()) {
+    Paciente* paciente = colaPendientes.pop();
+    delete paciente;
+}
     
     Nodo<Servicio*>* cursor = listaServicios;
     while (cursor != nullptr) {
@@ -46,7 +50,6 @@ void Hospital::inicializarServicios() {
     }
 }
 
-// Recorre la lista enlazada de servicios buscando uno por nombre
 Servicio* Hospital::buscarServicio(string nombreServicio) const {
     Nodo<Servicio*>* cursor = listaServicios;
     while (cursor != nullptr) {
@@ -57,6 +60,38 @@ Servicio* Hospital::buscarServicio(string nombreServicio) const {
     }
     return nullptr;
 }
+
+Paciente* Hospital::buscarPaciente(string id) const {
+    Nodo<Paciente*>* cursorPendientes = colaPendientes.getFrenteNodo();
+
+    while (cursorPendientes != nullptr) {
+        Paciente* paciente = cursorPendientes->getValor();
+
+        if (paciente->getId() == id) {
+            return paciente;
+        }
+
+        cursorPendientes = cursorPendientes->getSiguiente();
+    }
+
+    Nodo<Servicio*>* cursorServicios = listaServicios;
+
+    while (cursorServicios != nullptr) {
+        Servicio* servicio = cursorServicios->getValor();
+
+        Paciente* paciente = servicio->buscarPaciente(id);
+
+        if (paciente != nullptr) {
+            return paciente;
+        }
+
+        cursorServicios = cursorServicios->getSiguiente();
+    }
+
+    return nullptr;
+}
+
+
 
 
 bool Hospital::cargarPacientesDesdeArchivo(string nombreArchivo) {
