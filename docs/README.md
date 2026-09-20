@@ -2,6 +2,15 @@
 
 Proyecto en C++ que simula la atención de pacientes en un hospital, utilizando estructuras de datos manuales (listas enlazadas, colas y pilas) y programación orientada a objetos.
 
+
+---
+
+## Integrantes
+<!-- (Nombre | RUT | Carrera | Usuario de github) -->
+- Vicente Veliz         | 22.012.230-1 | ICCI | VelizVeliz
+- Christian Mardones    | 22.026.428-9 | ICCI | Nasas20
+- Maximiliano Castillos | 21.878.367-8 | ICCI | maximilianocastillo-arch
+  
 ---
 
 ## Estructura del proyecto
@@ -63,8 +72,4 @@ Checklist de pruebas
 [] Buscar pacientes por ID en cola y servicios.
 [] Probar entradas inválidas (IDs inexistentes, opciones fuera de rango).
 [] Confirmar que al salir se libera toda la memoria.
-
-Autores
-Maximiliano Castillo
-Vicente Veliz
-Christian Mardones
+```
